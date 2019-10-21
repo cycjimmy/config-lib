@@ -15,7 +15,7 @@ module.exports = ({
                     gitAssets,
                     changelog = false,
                     changelogFile,
-                  }) => {
+                  } = {}) => {
 
   const _plugins = [
     "@semantic-release/commit-analyzer",

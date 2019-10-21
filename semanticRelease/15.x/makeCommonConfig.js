@@ -13,7 +13,7 @@ module.exports = ({
                       "package.json",
                       "package-lock.json"
                     ],
-                  }) => makeConfig({
+                  } = {}) => makeConfig({
   githubOptions,
   git: true,
   gitAssets,
