@@ -1,0 +1,27 @@
+{
+  "name": "@cycjimmy/config-lib",
+  "version": "0.0.0-developmemt",
+  "description": "Personal collection of configs",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cycjimmy/config-lib.git"
+  },
+  "keywords": [
+    "collection",
+    "config"
+  ],
+  "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/cycjimmy/config-lib/issues"
+  },
+  "homepage": "https://github.com/cycjimmy/config-lib#readme",
+  "devDependencies": {
+    "cz-conventional-changelog": "^3.0.2"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
+}
