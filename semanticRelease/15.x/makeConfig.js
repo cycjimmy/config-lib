@@ -1,20 +1,24 @@
 /**
  * makeConfig
+ * @param changelog
+ * @param changelogFile
+ * @param exec
+ * @param execOptions
  * @param npmOptions
  * @param githubOptions
  * @param git
  * @param gitAssets
- * @param changelog
- * @param changelogFile
- * @returns {{plugins: *[]}}
+ * @returns {{plugins: string[]}}
  */
 module.exports = ({
+                    changelog = false,
+                    changelogFile,
+                    exec = false,
+                    execOptions = {},
                     npmOptions = {},
                     githubOptions = {},
                     git = false,
                     gitAssets,
-                    changelog = false,
-                    changelogFile,
                   } = {}) => {
 
   const _plugins = [
@@ -31,6 +35,11 @@ module.exports = ({
     ];
 
     _plugins.push(changelogSetting);
+  }
+
+  if(exec) {
+    const execSetting = ["@semantic-release/exec", execOptions];
+    _plugins.push(execSetting);
   }
 
   const npmSetting = ["@semantic-release/npm", npmOptions];

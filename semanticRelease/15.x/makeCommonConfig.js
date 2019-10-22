@@ -2,23 +2,29 @@ const makeConfig = require("./makeConfig");
 
 /**
  * makeCommonConfig
+ * @param changelogFile
+ * @param exec
+ * @param execOptions
  * @param githubOptions
  * @param gitAssets
- * @param changelogFile
- * @returns {{plugins: *[]}}
+ * @returns {{plugins: string[]}}
  */
 module.exports = ({
+                    changelogFile = "docs/CHANGELOG.md",
+                    exec = false,
+                    execOptions = {},
                     githubOptions,
                     gitAssets = [
                       "docs/CHANGELOG.md",
                       "package.json",
                       "package-lock.json"
-                    ],
-                    changelogFile = "docs/CHANGELOG.md"
+                    ]
                   } = {}) => makeConfig({
+  changelog: true,
+  changelogFile,
+  exec,
+  execOptions,
   githubOptions,
   git: true,
   gitAssets,
-  changelog: true,
-  changelogFile,
 });
