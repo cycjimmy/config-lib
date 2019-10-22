@@ -20,9 +20,25 @@ module.exports = ({
   const _plugins = [
     "@semantic-release/commit-analyzer",
     "@semantic-release/release-notes-generator",
-    ["@semantic-release/npm", npmOptions],
-    ["@semantic-release/github", githubOptions],
   ];
+
+  if (changelog) {
+    const changelogSetting = [
+      "@semantic-release/changelog",
+      {
+        "changelogFile": changelogFile
+      }
+    ];
+
+    _plugins.push(changelogSetting);
+  }
+
+  const npmSetting = ["@semantic-release/npm", npmOptions];
+  const githubSetting = ["@semantic-release/github", githubOptions];
+  _plugins.push(
+    npmSetting,
+    githubSetting,
+  );
 
   if (git) {
     const gitSetting = [
@@ -34,17 +50,6 @@ module.exports = ({
     ];
 
     _plugins.push(gitSetting);
-  }
-
-  if (changelog) {
-    const changelogSetting = [
-      "@semantic-release/changelog",
-      {
-        "changelogFile": changelogFile
-      }
-    ];
-
-    _plugins.push(changelogSetting);
   }
 
   return {
