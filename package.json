@@ -16,15 +16,7 @@
     "url": "https://github.com/cycjimmy/config-lib/issues"
   },
   "homepage": "https://github.com/cycjimmy/config-lib#readme",
-  "devDependencies": {
-    "cz-conventional-changelog": "^3.0.2"
-  },
   "publishConfig": {
     "access": "public"
-  },
-  "config": {
-    "commitizen": {
-      "path": "./node_modules/cz-conventional-changelog"
-    }
   }
 }
