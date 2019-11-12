@@ -1,7 +1,4 @@
 # config-lib
-
-[![NPM version][npm-image]][npm-url]
-[![npm download][download-image]][download-url]
 [![libraries sourcerank][libraries-sourcerank-image]][libraries-sourcerank-url]
 [![Release date][release-date-image]][release-url]
 [![semantic-release][semantic-image]][semantic-url]
@@ -10,6 +7,9 @@
 Personal collection of configs
 
 ## Install
+[![NPM version][npm-image]][npm-url]
+[![npm download][download-image]][download-url]
+
 ```shell
 # via npm
 $ npm install @cycjimmy/config-lib --save
