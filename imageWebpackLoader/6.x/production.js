@@ -33,8 +33,5 @@ module.exports = {
         },
       ],
     },
-    webp: {
-      quality: 75
-    },
   }
 };
