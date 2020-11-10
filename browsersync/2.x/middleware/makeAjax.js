@@ -14,7 +14,7 @@ module.exports = ({
     apiName = '[' + apiName + ']';
 
     return (req, res, next) => {
-      let remoteAddress = req.headers['x-forwarded-for'] ||
+      const remoteAddress = req.headers['x-forwarded-for'] ||
         req.connection.remoteAddress ||
         req.socket.remoteAddress ||
         req.connection.socket.remoteAddress
@@ -30,7 +30,7 @@ module.exports = ({
           apiName + ' -----------------' + '\n' +
           apiName + ' Method: ' + req.method + '\n' +
           apiName + ' RemoteAddress: ' + remoteAddress + '\n' +
-          apiName + ' Data: ' + req.query + '\n'
+          apiName + ' Query: ' + req.originalUrl.replace(/.+\?/, '') + '\n'
         );
 
         setTimeout(() => {
