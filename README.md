@@ -18,6 +18,16 @@ $ npm install @cycjimmy/config-lib --save
 $ yarn add @cycjimmy/config-lib
 ```
 
+## Usage. E.g:
+```javascript
+import production from '@cycjimmy/config-lib/esm/terser/4.x/production';
+// or
+const production = require('@cycjimmy/config-lib/cjs/terser/4.x/production').default;
+
+// do something
+// ...
+```
+
 <!-- Links: -->
 [npm-image]: https://img.shields.io/npm/v/@cycjimmy/config-lib
 [npm-url]: https://npmjs.org/package/@cycjimmy/config-lib

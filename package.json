@@ -1,7 +1,15 @@
 {
   "name": "@cycjimmy/config-lib",
-  "version": "1.8.0",
+  "version": "0.0.0-development",
   "description": "Personal collection of configs",
+  "scripts": {
+    "lint": "eslint -c .eslintrc .",
+    "lint:fix": "eslint --fix -c .eslintrc .",
+    "babel": "npx babel src --out-dir dist/esm",
+    "transform2cjs": "cross-env NODE_ENV=cjs npx babel dist/esm --out-dir dist/cjs",
+    "build": "npm run lint:fix && trash dist && npm run babel && npm run transform2cjs",
+    "package": "npm run build && node modifyPackage.mjs && gulp copy:package"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cycjimmy/config-lib.git"
@@ -18,5 +26,16 @@
   "homepage": "https://github.com/cycjimmy/config-lib#readme",
   "publishConfig": {
     "access": "public"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.16.0",
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "cross-env": "^7.0.3",
+    "eslint": "^8.2.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.3",
+    "gulp": "^4.0.2",
+    "trash-cli": "^4.0.0"
   }
 }

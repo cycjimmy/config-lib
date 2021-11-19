@@ -3,7 +3,7 @@
  * @doc https://github.com/terser/terser#minify-options
  * @type Object
  */
-module.exports = {
+export default {
   ecma: 5,
   warnings: false,
   ie8: false,

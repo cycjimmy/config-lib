@@ -3,7 +3,7 @@
  * @doc https://github.com/tcoopman/image-webpack-loader#usage
  * @type Object
  */
-module.exports = {
+export default {
   loader: 'image-webpack-loader',
   options: {
     mozjpeg: {
@@ -17,32 +17,19 @@ module.exports = {
       optimizationLevel: 6,
     },
     pngquant: {
-      quality: [.65, .9],
+      quality: [0.65, 0.9],
       speed: 4,
     },
     svgo: {
       plugins: [
         {
-          name: 'removeViewBox',
-          active: false,
+          removeViewBox: false,
         },
         {
-          name: 'removeEmptyAttrs',
-          active: false,
+          removeEmptyAttrs: false,
         },
         {
-          name: 'moveGroupAttrsToElems',
-          active: false,
-        },
-        {
-          name: 'addAttributesToSVGElement',
-          params: {
-            attributes: [
-              {
-                xmlns: 'http://www.w3.org/2000/svg',
-              },
-            ],
-          },
+          moveGroupAttrsToElems: false,
         },
       ],
     },

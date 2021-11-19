@@ -1,10 +1,10 @@
-const terserOptions = require('../../terser/4.x/production');
+import terserOptions from '../../terser/4.x/production';
 
 /**
  * production
  * @type Object
  */
-module.exports = {
+export default {
   extractComments: false,
   terserOptions,
 };

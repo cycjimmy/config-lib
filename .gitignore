@@ -56,4 +56,5 @@ npm-debug.log
 yarn-error.log
 bower_components/
 
-
+# project
+dist/
