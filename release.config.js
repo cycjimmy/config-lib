@@ -12,14 +12,5 @@ module.exports = {
       pkgRoot: 'dist',
     }],
     '@semantic-release/github',
-    [
-      '@semantic-release/git',
-      {
-        assets: [
-          'package.json',
-        ],
-        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-      },
-    ],
   ],
 };
