@@ -9,7 +9,7 @@
     "babel": "npx babel src --out-dir dist/esm",
     "transform2cjs": "cross-env NODE_ENV=cjs npx babel dist/esm --out-dir dist/cjs",
     "build": "npm run lint:fix && trash dist && npm run babel && npm run transform2cjs",
-    "package": "npm run build && node modifyPackage.mjs && gulp copy:package"
+    "package": "npm run build && node modifyPackage.js && gulp copy:package"
   },
   "repository": {
     "type": "git",
