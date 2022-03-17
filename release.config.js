@@ -1,6 +1,6 @@
 /* eslint no-template-curly-in-string: "off" */
 
-export default {
+module.exports = {
   dryRun: false,
   plugins: [
     '@semantic-release/commit-analyzer',
