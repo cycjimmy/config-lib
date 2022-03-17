@@ -30,6 +30,21 @@ jobs:
         uses: cycjimmy/semantic-release-action@v3
         with:
           dry_run: true
+          branches: |
+            [
+              'master',
+              'main',
+              'next',
+              'next-major',
+              {
+                name: 'beta',
+                prerelease: true
+              },
+              {
+                name: 'alpha',
+                prerelease: true
+              }
+            ]
           extra_plugins: |
             @semantic-release/exec
         env:
