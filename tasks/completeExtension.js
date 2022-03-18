@@ -3,12 +3,15 @@ import {
   lstatSync, readdirSync, readFile, writeFile,
 } from 'fs';
 
-Promise.resolve()
+const handleTask = ({
+  dir,
+  handleData = (data) => data,
+}) => Promise.resolve()
   .then(() => new Promise((resolve) => {
     const targetFilesFullPathArray = [];
-    const traverseDir = (dir) => {
-      readdirSync(dir).forEach((file) => {
-        const fullPath = path.join(dir, file);
+    const traverseDir = (handleDir) => {
+      readdirSync(handleDir).forEach((file) => {
+        const fullPath = path.join(handleDir, file);
         if (lstatSync(fullPath).isDirectory()) {
           traverseDir(fullPath);
         } else {
@@ -17,7 +20,7 @@ Promise.resolve()
       });
     };
 
-    traverseDir(path.resolve('dist', 'cjs'));
+    traverseDir(dir);
     setTimeout(() => resolve(targetFilesFullPathArray), 500);
   }))
   .then((targetFilesFullPathArray) => targetFilesFullPathArray
@@ -36,13 +39,7 @@ Promise.resolve()
         );
       }))
       .then((fileData) => new Promise((resolve) => {
-        const handledFileData = fileData.replaceAll(
-          /require\("(.+)"\)/g,
-          ($0, $1) => ($1.search('.cjs') === -1
-            ? `require("${$1}.cjs")`
-            : $0),
-        );
-        setTimeout(() => resolve(handledFileData), 100);
+        setTimeout(() => resolve(handleData(fileData)), 100);
       }))
       .then((handledFileData) => new Promise((resolve, reject) => {
         writeFile(
@@ -58,3 +55,26 @@ Promise.resolve()
           },
         );
       }))));
+
+Promise.resolve()
+  .then(() => Promise.all([
+    handleTask({
+      dir: path.resolve('dist', 'cjs'),
+      handleData: (data) => data.replaceAll(
+        /require\("(.+)"\)/g,
+        ($0, $1) => ($1.search('.cjs') === -1
+          ? `require("${$1}.cjs")`
+          : $0),
+      ),
+    }),
+
+    handleTask({
+      dir: path.resolve('dist', 'esm'),
+      handleData: (data) => data.replaceAll(
+        /import\s(.+)\sfrom\s'(.+)'/g,
+        ($0, $1, $2) => ($2.search('.js') === -1
+          ? `import ${$1} from '${$2}.js'`
+          : $0),
+      ),
+    }),
+  ]));
