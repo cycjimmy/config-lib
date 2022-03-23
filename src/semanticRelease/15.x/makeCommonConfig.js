@@ -5,6 +5,7 @@ import makeConfig from './makeConfig';
  * @param changelogFile
  * @param exec
  * @param execOptions
+ * @param npmOptions
  * @param githubOptions
  * @param gitAssets
  * @returns {{plugins: string[]}}
@@ -13,6 +14,7 @@ export default ({
   changelogFile = 'docs/CHANGELOG.md',
   exec = false,
   execOptions = {},
+  npmOptions = {},
   githubOptions,
   gitAssets = [
     'docs/CHANGELOG.md',
@@ -24,6 +26,7 @@ export default ({
   changelogFile,
   exec,
   execOptions,
+  npmOptions,
   githubOptions,
   git: true,
   gitAssets,
