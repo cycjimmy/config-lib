@@ -59,7 +59,7 @@ const handleTask = ({
 Promise.resolve()
   .then(() => Promise.all([
     handleTask({
-      dir: path.resolve('dist', 'cjs'),
+      dir: path.resolve('.release', 'cjs'),
       handleData: (data) => data.replaceAll(
         /require\("(.+)"\)/g,
         ($0, $1) => ($1.search('.cjs') === -1
@@ -69,7 +69,7 @@ Promise.resolve()
     }),
 
     handleTask({
-      dir: path.resolve('dist', 'esm'),
+      dir: path.resolve('.release', 'esm'),
       handleData: (data) => data.replaceAll(
         /import\s(.+)\sfrom\s'(.+)'/g,
         ($0, $1, $2) => ($2.search('.js') === -1

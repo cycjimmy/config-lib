@@ -57,4 +57,4 @@ yarn-error.log
 bower_components/
 
 # project
-dist/
+.release/
