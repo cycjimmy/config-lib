@@ -9,7 +9,7 @@ module.exports = {
       prepareCmd: 'npm run package',
     }],
     ['@semantic-release/npm', {
-      pkgRoot: 'dist',
+      pkgRoot: '.release',
     }],
     '@semantic-release/github',
   ],
