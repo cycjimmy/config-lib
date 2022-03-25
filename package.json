@@ -1,6 +1,6 @@
 {
   "name": "@cycjimmy/config-lib",
-  "version": "3.1.4",
+  "version": "3.2.0",
   "type": "module",
   "description": "Personal collection of configs",
   "scripts": {
