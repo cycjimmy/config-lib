@@ -13,6 +13,9 @@ module.exports = {
     ['@semantic-release/exec', {
       prepareCmd: 'npm run package',
     }],
+    ["@semantic-release/npm", {
+      "npmPublish": false
+    }],
     ['@semantic-release/npm', {
       pkgRoot: '.release',
     }],
