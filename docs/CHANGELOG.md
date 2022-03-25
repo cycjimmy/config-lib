@@ -1,3 +1,10 @@
+## [3.1.4](https://github.com/cycjimmy/config-lib/compare/v3.1.3...v3.1.4) (2022-03-25)
+
+
+### Bug Fixes
+
+* fix update root version ([9eb421f](https://github.com/cycjimmy/config-lib/commit/9eb421f12363deac72ff54c90696796c968c0142))
+
 ## [3.1.3](https://github.com/cycjimmy/config-lib/compare/v3.1.2...v3.1.3) (2022-03-25)
 
 
