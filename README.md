@@ -20,9 +20,9 @@ $ yarn add @cycjimmy/config-lib
 
 ## Usage. E.g:
 ```javascript
-import production from '@cycjimmy/config-lib/esm/terser/4.x/production';
+import production from '@cycjimmy/config-lib/esm/terser/4.x/production.js';
 // or
-const production = require('@cycjimmy/config-lib/cjs/terser/4.x/production').default;
+const production = require('@cycjimmy/config-lib/cjs/terser/4.x/production.cjs').default;
 
 // do something
 // ...
