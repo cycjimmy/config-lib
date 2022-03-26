@@ -10,7 +10,7 @@
  * @param githubOptions
  * @param git
  * @param gitAssets
- * @returns {{plugins: string[]}}
+ * @returns {{plugins: *[]}}
  */
 export default ({
   changelog = true,
@@ -30,52 +30,55 @@ export default ({
     'package-lock.json',
   ],
 } = {}) => {
-  const plugins = [
-    '@semantic-release/commit-analyzer',
-    '@semantic-release/release-notes-generator',
-  ];
+  const changelogSetting = changelog
+    ? [
+      [
+        '@semantic-release/changelog',
+        {
+          changelogFile,
+        },
+      ],
+    ]
+    : [];
 
-  if (changelog) {
-    const changelogSetting = [
-      '@semantic-release/changelog',
-      {
-        changelogFile,
-      },
-    ];
+  const execSetting = exec
+    ? [
+      ['@semantic-release/exec', execOptions],
+    ]
+    : [];
 
-    plugins.push(changelogSetting);
-  }
-
-  if (exec) {
-    const execSetting = ['@semantic-release/exec', execOptions];
-    plugins.push(execSetting);
-  }
-
-  const npmSettings = [
-    ['@semantic-release/npm', {
-      npmPublish: false,
-    }],
+  const npmSetting = [
     ['@semantic-release/npm', npmOptions],
   ];
-  const githubSetting = ['@semantic-release/github', githubOptions];
-  plugins.push(
-    ...npmSettings,
-    githubSetting,
-  );
 
-  if (git) {
-    const gitSetting = [
-      '@semantic-release/git',
-      {
-        assets: gitAssets,
-        message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
-      },
-    ];
+  const githubSetting = [
+    ['@semantic-release/github', githubOptions],
+  ];
 
-    plugins.push(gitSetting);
-  }
+  const gitSetting = git
+    ? [
+      [
+        '@semantic-release/git',
+        {
+          assets: gitAssets,
+          message: 'chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}',
+        },
+      ],
+    ]
+    : [];
 
   return {
-    plugins,
+    plugins: [
+      '@semantic-release/commit-analyzer',
+      '@semantic-release/release-notes-generator',
+      ...changelogSetting,
+      ['@semantic-release/npm', {
+        npmPublish: false,
+      }],
+      ...execSetting,
+      ...npmSetting,
+      ...githubSetting,
+      ...gitSetting,
+    ],
   };
 };

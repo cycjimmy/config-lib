@@ -10,11 +10,11 @@ module.exports = {
         changelogFile: 'docs/CHANGELOG.md',
       },
     ],
-    ['@semantic-release/exec', {
-      prepareCmd: 'npm run package',
-    }],
     ["@semantic-release/npm", {
       "npmPublish": false
+    }],
+    ['@semantic-release/exec', {
+      prepareCmd: 'npm run package',
     }],
     ['@semantic-release/npm', {
       pkgRoot: '.release',
