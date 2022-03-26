@@ -1,3 +1,10 @@
+## [3.2.1](https://github.com/cycjimmy/config-lib/compare/v3.2.0...v3.2.1) (2022-03-26)
+
+
+### Bug Fixes
+
+* makeConfigWithPgkRootForLibrary Modify task order ([4c7b9bc](https://github.com/cycjimmy/config-lib/commit/4c7b9bc33bb1c6fc0c2e2d3b908760dbeb8bc2ea))
+
 # [3.2.0](https://github.com/cycjimmy/config-lib/compare/v3.1.4...v3.2.0) (2022-03-25)
 
 
