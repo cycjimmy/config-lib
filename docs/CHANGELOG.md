@@ -1,3 +1,10 @@
+## [3.2.2](https://github.com/cycjimmy/config-lib/compare/v3.2.1...v3.2.2) (2024-07-17)
+
+
+### Bug Fixes
+
+* upgrade deps ([4cb8fb4](https://github.com/cycjimmy/config-lib/commit/4cb8fb4f578b5a0ec69de26cbfcece33048d905f))
+
 ## [3.2.1](https://github.com/cycjimmy/config-lib/compare/v3.2.0...v3.2.1) (2022-03-26)
 
 
