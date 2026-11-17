@@ -1,9 +1,27 @@
-/**
- * production
- * @doc https://github.com/tcoopman/image-webpack-loader#usage
- * @type Object
- */
-export default {
+// Production options for image-webpack-loader 8.x.
+// Doc: https://github.com/tcoopman/image-webpack-loader#usage
+
+export interface SvgoPlugin {
+  name: string
+  active?: boolean
+  params?: { attributes: Array<Record<string, string>> }
+}
+
+export interface ImageWebpackLoader8Options {
+  mozjpeg: { progressive: boolean, quality: number }
+  gifsicle: { interlaced: boolean }
+  optipng: { optimizationLevel: number }
+  pngquant: { quality: [number, number], speed: number }
+  // 8.x takes the svgo 2.x plugin shape: a descriptor per plugin.
+  svgo: { plugins: SvgoPlugin[] }
+}
+
+export interface ImageWebpackLoader8Config {
+  loader: string
+  options: ImageWebpackLoader8Options
+}
+
+const production: ImageWebpackLoader8Config = {
   loader: 'image-webpack-loader',
   options: {
     mozjpeg: {
@@ -47,4 +65,6 @@ export default {
       ],
     },
   },
-};
+}
+
+export default production

@@ -58,3 +58,6 @@ bower_components/
 
 # project
 .release/
+dist/
+temp/
+coverage/
