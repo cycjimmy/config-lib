@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "declaration": true,
+    "emitDeclarationOnly": true,
+    "noEmit": false,
+    // Declarations land next to the built `.js` files, so a consumer importing
+    // `dist/<module>.js` picks up `dist/<module>.d.ts` without an exports map.
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}

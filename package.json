@@ -1,43 +1,58 @@
 {
   "name": "@cycjimmy/config-lib",
-  "version": "3.2.2",
   "type": "module",
+  "version": "3.2.2",
   "description": "Personal collection of configs",
-  "scripts": {
-    "lint": "eslint -c .eslintrc .",
-    "lint:fix": "eslint --fix -c .eslintrc .",
-    "babel": "npx babel src --out-dir .release/esm",
-    "transform2cjs": "cross-env NODE_ENV=cjs npx babel .release/esm --out-dir .release/cjs --out-file-extension .cjs",
-    "completeExtension": "node tasks/completeExtension.js",
-    "build": "npm run lint:fix && trash .release && npm run babel && npm run transform2cjs && npm run completeExtension",
-    "package": "npm run build && node tasks/copyFiles.js && node tasks/handlePackageJson.js"
-  },
+  "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
+  "license": "MIT",
+  "homepage": "https://github.com/cycjimmy/config-lib#readme",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/cycjimmy/config-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/cycjimmy/config-lib/issues"
   },
   "keywords": [
     "collection",
     "config"
   ],
-  "author": "cycjimmy <cycjimmy@gmail.com> (https://github.com/cycjimmy)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/cycjimmy/config-lib/issues"
+  "exports": {
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
   },
-  "homepage": "https://github.com/cycjimmy/config-lib#readme",
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": "^22.18.0 || >=24.11.0"
+  },
+  "scripts": {
+    "type-check": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "build": "trash dist && npm run build:types && npm run build:js",
+    "build:types": "tsc -p tsconfig.build.json",
+    "build:js": "vite build",
+    "package": "trash .release && npm run build && node tasks/copyFiles.ts && node tasks/handlePackageJson.ts"
+  },
   "publishConfig": {
     "access": "public"
   },
   "devDependencies": {
-    "@babel/cli": "^7.24.8",
-    "@babel/core": "^7.24.9",
-    "@babel/preset-env": "^7.24.8",
-    "cross-env": "^10.0.0",
-    "eslint": "^8.57.0",
-    "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-plugin-import": "^2.29.1",
+    "@antfu/eslint-config": "^10.0.0",
+    "@types/fs-extra": "^11.0.4",
+    "@types/node": "^26.6.6",
+    "@vitest/coverage-v8": "^5.1.0",
+    "eslint": "^10.13.0",
     "fs-extra": "^11.2.0",
-    "trash-cli": "^6.0.0"
+    "jiti": "^2.7.0",
+    "trash-cli": "^7.2.0",
+    "typescript": "^6.0.3",
+    "vite": "^8.3.5",
+    "vitest": "^5.1.0"
   }
 }
