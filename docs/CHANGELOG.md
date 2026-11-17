@@ -1,3 +1,17 @@
+# [4.0.0](https://github.com/cycjimmy/config-lib/compare/v3.2.2...v4.0.0) (2026-11-17)
+
+
+### Features
+
+* migrate to an ESM-only TypeScript build with Vite 8 ([f6eac70](https://github.com/cycjimmy/config-lib/commit/f6eac7026f672f82f1b32fe773f486b17b2a3b3d))
+
+
+### BREAKING CHANGES
+
+* published entries moved from esm/** to dist/**, the cjs/**
+artifacts were removed (ES modules stay require()-able on Node.js >= 22.12),
+and the minimum Node.js version is now ^22.18.0 || >=24.11.0.
+
 ## [3.2.2](https://github.com/cycjimmy/config-lib/compare/v3.2.1...v3.2.2) (2024-07-17)
 
 
